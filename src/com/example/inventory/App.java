@@ -10,3 +10,17 @@ public class App {
         );
     }
 }
+
+Improve error handling in main application
+
+    public static void main(String[] args) {
+    try {
+        ProductDao dao = new ProductDao();
+        dao.add(new Product(0, "Sample Item", 10, 99.99, "General"));
+        dao.listAll().forEach(p ->
+            System.out.println(p.getId() + " | " + p.getName())
+        );
+    } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+}

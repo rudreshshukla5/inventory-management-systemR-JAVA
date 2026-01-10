@@ -7,7 +7,9 @@ import java.util.List;
 public class ProductDao {
 
     public ProductDao() {
-        // create table if not exists
+        if (product == null || product.getName() == null || product.getName().isEmpty()) {
+            throw new IllegalArgumentException("Invalid product data");
+        }
         try (Connection c = DBConnection.getConnection(); Statement s = c.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS products(" +
                          "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
